@@ -10,23 +10,26 @@ import (
 	"gorm.io/gorm"
 )
 
-type Init struct {
-	useCluster bool
-}
+type Init struct{}
 
 func (init *Init) DB(db *gorm.DB) *Init {
 	global.G_DB = db
 	return init
 }
 
+func (init *Init) SetRedisMod(b bool) *Init {
+	global.G_REDIS_CLUSTER_MOD = b
+	return init
+}
+
 func (init *Init) RedisStandalone(r *redis.Client) *Init {
-	global.G_REDIS_MOD = false
+	global.G_REDIS_CLUSTER_MOD = false
 	global.G_REDIS_STANDALONE = r
 	return init
 }
 
 func (init *Init) RedisCluster(rs *redis.ClusterClient) *Init {
-	global.G_REDIS_MOD = true
+	global.G_REDIS_CLUSTER_MOD = true
 	global.G_REDIS_CLUSTER = rs
 	return init
 }

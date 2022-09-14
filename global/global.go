@@ -19,7 +19,7 @@ var (
 	G_DB                  *gorm.DB
 	G_REDIS_STANDALONE    *redis.Client
 	G_REDIS_CLUSTER       *redis.ClusterClient
-	G_REDIS_MOD           bool
+	G_REDIS_CLUSTER_MOD   bool
 	G_CONFIG              config.Server
 	G_VP                  *viper.Viper
 	G_LOG                 *zap.Logger
