@@ -1,4 +1,4 @@
-package gallery
+package auth
 
 import (
 	"github.com/xyy277/gallery/global"

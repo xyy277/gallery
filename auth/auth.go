@@ -1,7 +1,6 @@
-package gallery
+package auth
 
 import (
-	"github.com/xyy277/gallery/auth"
 	"github.com/xyy277/gallery/global"
 
 	"github.com/gin-gonic/gin"
@@ -9,7 +8,7 @@ import (
 )
 
 func Enforce(c *gin.Context) (bool, error) {
-	waitUse, _ := auth.GetClaims(c)
+	waitUse, _ := GetClaims(c)
 	// 获取请求的PATH
 	obj := c.Request.URL.Path
 	// 获取请求方法
@@ -26,7 +25,7 @@ func Enforce(c *gin.Context) (bool, error) {
 
 func LoadAll() {
 	var data []string
-	err := global.G_DB.Model(&auth.JwtBlacklist{}).Select("jwt").Find(&data).Error
+	err := global.G_DB.Model(&JwtBlacklist{}).Select("jwt").Find(&data).Error
 	if err != nil {
 		global.G_LOG.Error("加载数据库jwt黑名单失败!", zap.Error(err))
 		return

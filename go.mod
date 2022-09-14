@@ -3,6 +3,7 @@ module github.com/xyy277/gallery
 go 1.18
 
 require (
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/songzhibin97/gkit v1.2.7
 	gorm.io/gorm v1.23.8
 )
@@ -19,7 +20,6 @@ require (
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.11.0 // indirect
-	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/goccy/go-json v0.9.7 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.0.0-20170517235910-f1bb20e5a188 // indirect
@@ -73,7 +73,6 @@ require (
 	github.com/casbin/casbin/v2 v2.54.0
 	github.com/casbin/gorm-adapter/v3 v3.10.0
 	github.com/gin-gonic/gin v1.8.1
-	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/golang-jwt/jwt/v4 v4.4.2
 	github.com/jinzhu/inflection v1.0.0 // indirect
