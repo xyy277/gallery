@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"github.com/songzhibin97/gkit/cache/local_cache"
 	"github.com/xyy277/gallery/global"
 
 	"github.com/go-redis/redis/v8"
@@ -37,5 +38,10 @@ func (init *Init) Viper(vp *viper.Viper) *Init {
 
 func (init *Init) Zap(zap *zap.Logger) *Init {
 	global.G_LOG = zap
+	return init
+}
+
+func (init *Init) BlackCache(cache local_cache.Cache) *Init {
+	global.BlackCache = cache
 	return init
 }
