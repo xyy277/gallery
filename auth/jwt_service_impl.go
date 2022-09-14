@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"gallery/global"
+	"github.com/xyy277/gallery/global"
 )
 
 type JwtService struct{}

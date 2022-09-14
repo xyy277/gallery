@@ -4,7 +4,7 @@ import (
 	"errors"
 	"sync"
 
-	"gallery/global"
+	"github.com/xyy277/gallery/global"
 
 	"github.com/casbin/casbin/v2"
 	gormadapter "github.com/casbin/gorm-adapter/v3"

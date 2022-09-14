@@ -1,7 +1,7 @@
 package gallery
 
 import (
-	"gallery/global"
+	"github.com/xyy277/gallery/global"
 
 	"github.com/go-redis/redis/v8"
 	"github.com/spf13/viper"

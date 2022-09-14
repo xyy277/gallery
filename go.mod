@@ -1,4 +1,4 @@
-module gallery
+module github.com/xyy277/gallery
 
 go 1.18
 

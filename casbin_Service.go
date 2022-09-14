@@ -1,7 +1,7 @@
-package auth
+package gallery
 
 import (
-	"gallery/auth"
+	"github.com/xyy277/gallery/auth"
 
 	"github.com/casbin/casbin/v2"
 )

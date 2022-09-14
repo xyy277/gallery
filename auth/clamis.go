@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"gallery/global"
+	"github.com/xyy277/gallery/global"
 
 	"github.com/gin-gonic/gin"
 	uuid "github.com/satori/go.uuid"

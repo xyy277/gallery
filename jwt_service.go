@@ -1,6 +1,6 @@
 package gallery
 
-import "gallery/auth"
+import "github.com/xyy277/gallery/auth"
 
 // 权限接口
 type JWT interface {

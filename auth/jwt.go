@@ -4,7 +4,7 @@ import (
 	"errors"
 	"time"
 
-	"gallery/global"
+	"github.com/xyy277/gallery/global"
 
 	"github.com/golang-jwt/jwt/v4"
 )

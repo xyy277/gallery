@@ -1,8 +1,8 @@
-package auth
+package gallery
 
 import (
-	"gallery/auth"
-	"gallery/global"
+	"github.com/xyy277/gallery/auth"
+	"github.com/xyy277/gallery/global"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
