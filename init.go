@@ -64,8 +64,3 @@ func (init *Init) ConfigJwt(c config.JWT) *Init {
 	global.G_CONFIG.JWT = c
 	return init
 }
-
-func (init *Init) ConfigZap(c config.Zap) *Init {
-	global.G_CONFIG.Zap = c
-	return init
-}
