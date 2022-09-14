@@ -17,6 +17,7 @@ import (
 
 var (
 	G_DB                  *gorm.DB
+	GS_DBList             map[string]*gorm.DB
 	G_REDIS_STANDALONE    *redis.Client
 	G_REDIS_CLUSTER       *redis.ClusterClient
 	G_REDIS_CLUSTER_MOD   bool
@@ -24,7 +25,6 @@ var (
 	G_VP                  *viper.Viper
 	G_LOG                 *zap.Logger
 	G_Concurrency_Control = &singleflight.Group{}
-
-	BlackCache local_cache.Cache
-	lock       sync.RWMutex
+	BlackCache            local_cache.Cache
+	lock                  sync.RWMutex
 )
