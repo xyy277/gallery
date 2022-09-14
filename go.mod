@@ -73,6 +73,7 @@ require (
 	github.com/casbin/casbin/v2 v2.54.0
 	github.com/casbin/gorm-adapter/v3 v3.10.0
 	github.com/gin-gonic/gin v1.8.1
+	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/golang-jwt/jwt/v4 v4.4.2
 	github.com/jinzhu/inflection v1.0.0 // indirect

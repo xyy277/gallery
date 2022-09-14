@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"gallery/gsafety.com/global"
+	"gallery/global"
 
 	"github.com/golang-jwt/jwt/v4"
 	uuid "github.com/satori/go.uuid"

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"time"
 
-	"gallery/gsafety.com/global"
+	"gallery/global"
 
 	"github.com/golang-jwt/jwt/v4"
 )

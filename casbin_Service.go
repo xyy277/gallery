@@ -1,15 +1,17 @@
 package auth
 
 import (
+	"gallery/auth"
+
 	"github.com/casbin/casbin/v2"
 )
 
 // 权限接口
 type Casbin interface {
 	// 更新casbin权限
-	UpdateCasbin(authorityId string, casbinInfos []CasbinInfo) error
+	UpdateCasbin(authorityId string, casbinInfos []auth.CasbinInfo) error
 	// 获取权限列表
-	GetPolicyPathByAuthorityId(authorityId string) (pathMaps []CasbinInfo)
+	GetPolicyPathByAuthorityId(authorityId string) (pathMaps []auth.CasbinInfo)
 	// 清除匹配的权限
 	ClearCasbin(v int, p ...string) bool
 	// 持久化到数据库  引入自定义规则
@@ -20,5 +22,5 @@ type Casbin interface {
 // 权限实现
 func NewCasbin() Casbin {
 
-	return &CasbinService{}
+	return &auth.CasbinService{}
 }
