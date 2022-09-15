@@ -1,4 +1,4 @@
-package auth
+package luna
 
 import (
 	"errors"
@@ -75,7 +75,7 @@ func (casbinService *CasbinService) Casbin() *casbin.SyncedEnforcer {
 		gormadapter.TurnOffAutoMigrate(global.G_DB)
 		a, err := gormadapter.NewAdapterByDB(global.G_DB)
 		if err != nil || a == nil {
-			global.G_LOG.Error("gormadapter.NewAdapterByDB failed", zap.Error(err))
+			global.G_LOG.Error("gormadapter.NewAdapterByDB failed, 无法持久化引入自定义规则", zap.Error(err))
 		}
 		syncedEnforcer, _ = casbin.NewSyncedEnforcer(global.G_CONFIG.Casbin.ModelPath, a)
 	})

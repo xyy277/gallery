@@ -1,4 +1,4 @@
-package auth
+package luna
 
 // Casbin info structure
 type CasbinInfo struct {

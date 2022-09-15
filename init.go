@@ -1,6 +1,8 @@
 package auth
 
 import (
+	"fmt"
+
 	"github.com/songzhibin97/gkit/cache/local_cache"
 	"github.com/xyy277/gallery/config"
 	"github.com/xyy277/gallery/global"
@@ -11,7 +13,26 @@ import (
 	"gorm.io/gorm"
 )
 
+var (
+	InitAuthKey bool
+)
+
 type Init struct{}
+
+func NewInit() *Init {
+	fmt.Printf(`
+	_____/\\\\\\\\\\\\_______/\\\\\\\\\\\\__
+ ___/\\\//////////_____/\\\//////////__
+  __/\\\_______________/\\\_____________
+   _\/\\\____/\\\\\\\__\/\\\____/\\\\\\\_
+    _\/\\\___\/////\\\__\/\\\___\/////\\\_
+     _\/\\\_______\/\\\__\/\\\_______\/\\\_
+      _\/\\\_______\/\\\__\/\\\_______\/\\\_ 
+       _\//\\\\\\\\\\\\/___\//\\\\\\\\\\\\/__
+        __\////////////______\////////////____
+	`)
+	return &Init{}
+}
 
 func (init *Init) DB(db *gorm.DB) *Init {
 	global.G_DB = db
@@ -55,6 +76,17 @@ func (init *Init) Config(config config.Server) *Init {
 	return init
 }
 
+func (init *Init) ConSystem(c config.System) *Init {
+	global.G_CONFIG.System = c
+	return init
+}
+
+func (init *Init) ConfigAuth(c config.AUTHKey) *Init {
+	InitAuthKey = true
+	global.G_CONFIG.AUTHKey = c
+	return init
+}
+
 func (init *Init) ConfigCasbin(c config.Casbin) *Init {
 	global.G_CONFIG.Casbin = c
 	return init
@@ -62,5 +94,10 @@ func (init *Init) ConfigCasbin(c config.Casbin) *Init {
 
 func (init *Init) ConfigJwt(c config.JWT) *Init {
 	global.G_CONFIG.JWT = c
+	return init
+}
+
+func (init *Init) ConfigMinio(c config.Minio) *Init {
+	global.G_CONFIG.Minio = c
 	return init
 }

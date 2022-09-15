@@ -1,4 +1,4 @@
-package auth
+package luna
 
 import (
 	"github.com/xyy277/gallery/global"
@@ -8,7 +8,7 @@ import (
 )
 
 func GetClaims(c *gin.Context) (*CustomClaims, error) {
-	token := c.Request.Header.Get("x-token")
+	token := c.Request.Header.Get(global.G_CONFIG.AUTHKey.Token)
 	j := NewTOKEN()
 	claims, err := j.ParseToken(token)
 	if err != nil {
@@ -32,7 +32,7 @@ func GetUserID(c *gin.Context) uint {
 }
 
 // GetUserUuid 从Gin的Context中获取从jwt解析出来的用户UUID
-func GetUserUuid(c *gin.Context) uuid.UUID {
+func GetUserUUID(c *gin.Context) uuid.UUID {
 	if claims, exists := c.Get("claims"); !exists {
 		if cl, err := GetClaims(c); err != nil {
 			return uuid.UUID{}

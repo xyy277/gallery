@@ -1,4 +1,4 @@
-package auth
+package luna
 
 import (
 	"github.com/xyy277/gallery/global"

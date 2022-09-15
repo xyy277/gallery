@@ -1,7 +1,6 @@
-package auth
+package luna
 
 import (
-	"context"
 	"time"
 
 	"github.com/xyy277/gallery/global"
@@ -37,24 +36,24 @@ func (jwtService *JwtService) IsBlacklist(jwt string) bool {
 	// return !isNotFound
 }
 
-//@function: GetRedisJWT
+//@function: GetCacheJWT
 //@description: 从redis取jwt
 //@param: userName string
 //@return: redisJWT string, err error
 
-func (jwtService *JwtService) GetRedisJWT(userName string) (redisJWT string, err error) {
-	redisJWT, err = redis.GetResult(context.Background(), userName)
+func (jwtService *JwtService) GetCacheJWT(userName string) (redisJWT string, err error) {
+	redisJWT, err = redis.GetResult(userName)
 	return redisJWT, err
 }
 
-//@function: SetRedisJWT
+//@function: SetCacheJWT
 //@description: jwt存入redis并设置过期时间
 //@param: jwt string, userName string
 //@return: err error
 
-func (jwtService *JwtService) SetRedisJWT(jwt string, userName string) (err error) {
+func (jwtService *JwtService) SetCacheJWT(jwt string, userName string) (err error) {
 	// 此处过期时间等于jwt过期时间
 	timer := time.Duration(global.G_CONFIG.JWT.ExpiresTime) * time.Second
-	err = redis.Set(context.Background(), userName, jwt, timer)
+	err = redis.Set(userName, jwt, timer)
 	return err
 }

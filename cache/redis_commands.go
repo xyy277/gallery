@@ -1,4 +1,4 @@
-package redis
+package cache
 
 import (
 	"context"
@@ -22,7 +22,7 @@ func Nil() bool {
 	}
 }
 
-func ExistsResultByKey(ctx context.Context, key string) (int64, error) {
+func ExistsResultByKey(key string) (int64, error) {
 	var r int64
 	var err error
 	if global.G_REDIS_CLUSTER_MOD {
@@ -34,7 +34,7 @@ func ExistsResultByKey(ctx context.Context, key string) (int64, error) {
 	return r, err
 }
 
-func GetInt(ctx context.Context, key string) (int, error) {
+func GetInt(key string) (int, error) {
 	var r int
 	var err error
 	if global.G_REDIS_CLUSTER_MOD {
@@ -46,7 +46,7 @@ func GetInt(ctx context.Context, key string) (int, error) {
 	return r, err
 }
 
-func Incr(ctx context.Context, key string) error {
+func Incr(key string) error {
 	var err error
 	if global.G_REDIS_CLUSTER_MOD {
 		err = global.G_REDIS_CLUSTER.Incr(context.Background(), key).Err()
@@ -68,7 +68,7 @@ func TxPipeline() v8.Pipeliner {
 	return pipe
 }
 
-func PTTL(ctx context.Context, key string) (time.Duration, error) {
+func PTTL(key string) (time.Duration, error) {
 	var t time.Duration
 	var err error
 	if global.G_REDIS_CLUSTER_MOD {
@@ -79,19 +79,19 @@ func PTTL(ctx context.Context, key string) (time.Duration, error) {
 	return t, err
 }
 
-func GetResult(ctx context.Context, key string) (string, error) {
+func GetResult(key string) (string, error) {
 	var r string
 	var err error
 	if global.G_REDIS_CLUSTER_MOD {
-		r, err = global.G_REDIS_CLUSTER.Get(ctx, key).Result()
+		r, err = global.G_REDIS_CLUSTER.Get(context.Background(), key).Result()
 	} else {
-		r, err = global.G_REDIS_STANDALONE.Get(ctx, key).Result()
+		r, err = global.G_REDIS_STANDALONE.Get(context.Background(), key).Result()
 
 	}
 	return r, err
 }
 
-func Set(ctx context.Context, key string, value interface{}, expiration time.Duration) error {
+func Set(key string, value interface{}, expiration time.Duration) error {
 	var err error
 	if global.G_REDIS_CLUSTER_MOD {
 		err = global.G_REDIS_CLUSTER.Set(context.Background(), key, value, expiration).Err()

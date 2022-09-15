@@ -1,4 +1,4 @@
-package auth
+package luna
 
 import (
 	"github.com/casbin/casbin/v2"
