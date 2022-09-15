@@ -101,3 +101,8 @@ func (init *Init) ConfigMinio(c config.Minio) *Init {
 	global.G_CONFIG.Minio = c
 	return init
 }
+
+func (init *Init) ConfigZinx(c config.Zinx) *Init {
+	global.G_CONFIG.Zinx = c
+	return init
+}

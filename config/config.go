@@ -6,4 +6,5 @@ type Server struct {
 	JWT     JWT     `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
 	Casbin  Casbin  `mapstructure:"casbin" json:"casbin" yaml:"casbin"`
 	Minio   Minio   `mapstructure:"minio" json:"minio" yaml:"minio"`
+	Zinx    Zinx    `mapstructure:"zinx" json:"zinx" yaml:"zinx"`
 }

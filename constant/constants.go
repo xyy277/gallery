@@ -1,1 +1,5 @@
 package constant
+
+const ()
+
+const ()
