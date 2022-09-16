@@ -1,14 +1,15 @@
 package star
 
-import "github.com/xyy277/gallery/global/response"
+import "github.com/xyy277/gallery/auth/luna"
 
 type Authentication struct{}
 
-func (authentication *Authentication) RequestToken(token string) (bool, response.Response) {
+func (authentication *Authentication) RequestToken(token string) (bool, string, *luna.CustomClaims) {
 	var r bool
-	var body response.Response
+	var msg string
+	var claims *luna.CustomClaims
 
-	return r, body
+	return r, msg, claims
 }
 
 func (authentication *Authentication) RequestEnforce(path string, method string) bool {
