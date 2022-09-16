@@ -7,6 +7,8 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+type Claimant struct{}
+
 func GetClaims(c *gin.Context) (*CustomClaims, error) {
 	token := c.Request.Header.Get(global.G_CONFIG.AUTHKey.Token)
 	j := NewTOKEN()

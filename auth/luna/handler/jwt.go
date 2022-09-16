@@ -1,10 +1,11 @@
-package middleware
+package handler
 
 import (
 	"strconv"
 	"time"
 
-	auth "github.com/xyy277/gallery/auth/luna"
+	auth "github.com/xyy277/gallery/auth/iface"
+	luna "github.com/xyy277/gallery/auth/luna"
 
 	"github.com/xyy277/gallery/global"
 	"github.com/xyy277/gallery/global/response"
@@ -29,11 +30,11 @@ func JWTAuth() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-		j := auth.NewTOKEN()
+		j := luna.NewTOKEN()
 		// parseToken 解析token包含的信息
 		claims, err := j.ParseToken(token)
 		if err != nil {
-			if err == auth.TokenExpired {
+			if err == luna.TokenExpired {
 				response.FailWithDetailed(gin.H{"reload": true}, "Authorization has expired", c)
 				c.Abort()
 				return
@@ -60,7 +61,7 @@ func JWTAuth() gin.HandlerFunc {
 				if err != nil {
 					global.G_LOG.Error("get redis jwt failed", zap.Error(err))
 				} else { // 当之前的取成功时才进行拉黑操作
-					_ = jwt.JsonInBlacklist(auth.JwtBlacklist{Jwt: RedisJwtToken})
+					_ = jwt.JsonInBlacklist(luna.JwtBlacklist{Jwt: RedisJwtToken})
 				}
 				// 无论如何都要记录当前的活跃状态
 				_ = jwt.SetCacheJWT(newToken, newClaims.Username)
