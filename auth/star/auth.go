@@ -1,8 +1,6 @@
-package iface
+package star
 
-import (
-	"github.com/xyy277/gallery/global/response"
-)
+import "github.com/xyy277/gallery/global/response"
 
 // star 请求 luna的接口进行鉴权与授权
 type AUTH interface {
@@ -12,7 +10,7 @@ type AUTH interface {
 	RequestEnforce(path string, method string) bool
 }
 
-func NewStarAUTH() AUTH {
+func NewAUTH() AUTH {
 	// Request impl
-	return &star.authentication{}
+	return &Authentication{}
 }

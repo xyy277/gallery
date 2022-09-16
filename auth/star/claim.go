@@ -3,7 +3,6 @@ package star
 import (
 	uuid "github.com/satori/go.uuid"
 	"github.com/xyy277/gallery/auth/luna"
-	"github.com/xyy277/gallery/auth/star"
 )
 
 type CLAIM interface {
@@ -13,7 +12,7 @@ type CLAIM interface {
 	GetUserAuthorityId(token string) string
 }
 
-func NewStarCLAMI() CLAIM {
+func NewCLAMI() CLAIM {
 
-	return &star.Claimant{}
+	return &Claimant{}
 }

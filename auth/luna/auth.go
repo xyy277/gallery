@@ -1,13 +1,13 @@
 package luna
 
 import (
-	"github.com/gin-gonic/gin"
-	casbin "github.com/xyy277/gallery/auth/iface"
 	"github.com/xyy277/gallery/global"
+
+	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 
-func (casbinService *CasbinService) Enforce(c *gin.Context) (bool, error) {
+func Enforce(c *gin.Context) (bool, error) {
 	waitUse, _ := GetClaims(c)
 	// 获取请求的PATH
 	obj := c.Request.URL.Path
@@ -15,7 +15,7 @@ func (casbinService *CasbinService) Enforce(c *gin.Context) (bool, error) {
 	act := c.Request.Method
 	// 获取用户的角色
 	sub := waitUse.AuthorityId
-	auth := casbin.NewCasbin()
+	auth := NewCasbin()
 	e := auth.Casbin()
 	// 判断策略中是否存在
 	success, err := e.Enforce(sub, obj, act)
